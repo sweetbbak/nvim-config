@@ -28,6 +28,9 @@ keymap.set(
     { desc = "turn off inline diagnostics" }
 )
 
+-- search inside visual selection
+keymap.set("x", "/", "<Esc>/\\%V")
+
 -- ctrl_s save
 keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:w<CR>")
 
