@@ -38,36 +38,36 @@ return {
             -- preselect = { cmp.PreselectMode.None },
             mapping = cmp.mapping.preset.insert({
                 -- nvchad
-                ["<CR>"] = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Insert,
-                    select = true,
-                }),
+                -- ["<CR>"] = cmp.mapping.confirm({
+                --     behavior = cmp.ConfirmBehavior.Insert,
+                --     select = true,
+                -- }),
 
-                -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
-                -- use tab for LSP and snippet completions
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                    elseif require("luasnip").expand_or_jumpable() then
-                        require("luasnip").expand_or_jump()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
+                -- -- use tab for LSP and snippet completions
+                -- ["<Tab>"] = cmp.mapping(function(fallback)
+                --     if cmp.visible() then
+                --         cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                --     elseif require("luasnip").expand_or_jumpable() then
+                --         require("luasnip").expand_or_jump()
+                --     else
+                --         fallback()
+                --     end
+                -- end, { "i", "s" }),
+                --
+                -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+                --     if cmp.visible() then
+                --         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                --     elseif require("luasnip").jumpable(-1) then
+                --         require("luasnip").jump(-1)
+                --     else
+                --         fallback()
+                --     end
+                -- end, { "i", "s" }),
 
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                    elseif require("luasnip").jumpable(-1) then
-                        require("luasnip").jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-
-                -- ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                -- ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
