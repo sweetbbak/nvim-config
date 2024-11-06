@@ -192,7 +192,7 @@ return {
                 zls = {
                     enable_snippets = true,
                     enable_build_on_save = true,
-                    enable_autofix = true,
+                    -- enable_autofix = true,
                     operator_completions = true,
                     include_at_in_builtins = true,
                     use_comptime_interpreter = true,
