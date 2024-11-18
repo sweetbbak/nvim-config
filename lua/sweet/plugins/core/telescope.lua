@@ -21,6 +21,7 @@ return {
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
         "andrew-george/telescope-themes",
+        "debugloop/telescope-undo.nvim",
         {
             "isak102/telescope-git-file-history.nvim",
             dependencies = { "tpope/vim-fugitive" },
@@ -115,10 +116,10 @@ return {
         })
 
         telescope.load_extension("fzf")
-        -- telescope.load_extension("manix")
         telescope.load_extension("git_file_history")
         telescope.load_extension("themes")
         telescope.load_extension("glyph")
+        telescope.load_extension("undo")
 
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
@@ -135,9 +136,11 @@ return {
         )
         keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
         keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-        -- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-        keymap.set("n", "<leader>fc", "<cmd>Telescope registers<cr>", { desc = "Fuzzy grep through clipboards" })
-        -- keymap.set("n", "<leader>ft", "<cmd>Telescope colorscheme<cr>", { desc = "Fuzzy select colorscheme" })
+        keymap.set("n", "<leader>fc", "<cmd>Telescope registers<cr>", { desc = "Fuzzy clipboards" })
+
+        keymap.set("n", "<leader>fu", ":Telescope undo<CR>", { noremap = true, silent = true, desc = "Undo" })
+        keymap.set("n", "<leader>fu", ":Telescope undo<CR>", { noremap = true, silent = true, desc = "Undo" })
+
         keymap.set(
             "n",
             "<leader>th",
@@ -151,8 +154,10 @@ return {
             ":lua require('telescope.builtin').colorscheme({ enable_preview = true })<cr>",
             { desc = "Fuzzy ect colorscheme" }
         )
+
         keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Key Maps" })
         keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Pages" })
-        keymap.set("n", "<leader>fo", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Help Pages" })
+        keymap.set("n", "<leader>fo", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Find in open buffer" })
+        keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", { desc = "Goto references" })
     end,
 }

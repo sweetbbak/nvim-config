@@ -34,6 +34,9 @@ keymap.set("x", "/", "<Esc>/\\%V")
 -- ctrl_s save
 keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:w<CR>")
 
+-- ctrl_s save without formatting
+keymap.set({ "n", "i", "v" }, "<C-a>", "<ESC>:noa w<CR>")
+
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 

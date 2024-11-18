@@ -36,6 +36,16 @@ return {
                     { filter = { find = "lines yanked" }, view = "mini" },
                     { filter = { find = "more line" }, view = "mini" },
                     { filter = { find = "fewer line" }, view = "mini" },
+                    {
+                        filter = {
+                            event = "msg_show",
+                            any = {
+                                { find = "%d+L, %d+B" },
+                                { find = "; after #%d+" },
+                                { find = "; before #%d+" },
+                            },
+                        },
+                    },
                 },
 
                 lsp = {

@@ -25,7 +25,8 @@ return {
                     enable = true,
                 },
                 -- enable indentation
-                indent = { enable = true },
+                -- indent = { enable = true },
+                indent = { enable = false },
                 -- enable autotagging (w/ nvim-ts-autotag plugin)
                 autotag = {
                     enable = true,
@@ -52,6 +53,10 @@ return {
                     "css",
                     "markdown",
                     "markdown_inline",
+                    "zig",
+                },
+                rainbow = {
+                    enable = true,
                 },
                 incremental_selection = {
                     enable = true,

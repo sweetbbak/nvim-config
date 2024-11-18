@@ -79,7 +79,7 @@ return {
                             vim.lsp.buf.format({
                                 filter = function(client)
                                     if client.name ~= "zig" or client.name ~= "zls" then
-                                        return true
+                                        -- return true
                                     end
                                     --  only use null-ls for formatting instead of lsp server
                                     return client.name == "null-ls"

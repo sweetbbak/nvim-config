@@ -21,6 +21,7 @@ return {
                 type_opts = {
                     float = {
                         relative = "editor",
+                        -- defaults:
                         -- row = 0.3,
                         -- col = 0.25,
                         -- width = 0.5,
@@ -32,7 +33,7 @@ return {
                         height = 0.57,
                         border = "none",
                     },
-                    horizontal = { location = "rightbelow", split_ratio = 0.3 },
+                    horizontal = { location = "rightbelow", split_ratio = 0.5 },
                     vertical = { location = "rightbelow", split_ratio = 0.5 },
                 },
             },

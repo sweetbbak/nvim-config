@@ -5,6 +5,7 @@ return {
 
     event = "InsertEnter",
     dependencies = {
+        "ray-x/lsp_signature.nvim",
         "hrsh7th/cmp-buffer", -- source for text in buffer
         "hrsh7th/cmp-path", -- source for file system paths
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
@@ -35,7 +36,7 @@ return {
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            -- preselect = { cmp.PreselectMode.None },
+            preselect = { cmp.PreselectMode.None },
             mapping = cmp.mapping.preset.insert({
                 -- nvchad
                 -- ["<CR>"] = cmp.mapping.confirm({
@@ -72,8 +73,11 @@ return {
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
 
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-j>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-k>"] = cmp.mapping.scroll_docs(4),
+
+                -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
                 ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
                 ["<C-e>"] = cmp.mapping.abort(), -- close completion window
@@ -176,15 +180,17 @@ return {
 
                         -- stylua: ignore
                         keys = {
-                          {
-                            "<C-j>",
-                            function()
-                              return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-                            end,
-                            expr = true, silent = true, mode = "i",
-                          },
-                          { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-                          { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+                          -- {
+                          --   "<C-j>",
+                          --   function()
+                          --     return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+                          --   end,
+                          --   expr = true, silent = true, mode = "i",
+                          -- },
+                          -- { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+                          -- { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+                          { "<C-j>", function() require("luasnip").jump(1) end, mode = { "i", "s" } },
+                          { "<C-k>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
                         },
                     },
                 }),
