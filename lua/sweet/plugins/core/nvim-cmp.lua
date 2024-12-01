@@ -23,7 +23,9 @@ return {
         local lspkind = require("lspkind")
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-        require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load({
+            paths = { vim.fn.stdpath("config") .. "/snippets" },
+        })
 
         cmp.setup({
             completion = {
@@ -116,9 +118,9 @@ return {
             -- sources for autocompletion
             sources = cmp.config.sources({
                 { name = "nvim_lsp", group_index = 1, keyword_length = 1, priority_weight = 1 },
-                { name = "luasnip", group_index = 2, max_view_entries = 2 }, -- snippets
-                { name = "buffer", group_index = 3, max_view_entries = 1 }, -- text within current buffer
-                { name = "nvim_lua" },
+                { name = "luasnip", group_index = 1, max_view_entries = 2 }, -- snippets
+                { name = "nvim_lua", group_index = 3 },
+                { name = "buffer", group_index = 3, max_view_entries = 2 }, -- text within current buffer
                 { name = "path", group_index = 3, max_view_entries = 1 }, -- file system paths
             }),
 
@@ -191,6 +193,8 @@ return {
                           -- { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
                           { "<C-j>", function() require("luasnip").jump(1) end, mode = { "i", "s" } },
                           { "<C-k>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+                          { "<C-n>", function() require("luasnip").jump(1) end, mode = { "i", "s" } },
+                          { "<C-p>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
                         },
                     },
                 }),
