@@ -5,7 +5,7 @@ return {
 
     event = "InsertEnter",
     dependencies = {
-        "ray-x/lsp_signature.nvim",
+        -- "ray-x/lsp_signature.nvim",
         "hrsh7th/cmp-buffer", -- source for text in buffer
         "hrsh7th/cmp-path", -- source for file system paths
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
