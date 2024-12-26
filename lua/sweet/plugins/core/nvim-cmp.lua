@@ -13,6 +13,7 @@ return {
         "L3MON4D3/LuaSnip", -- snippet engine
         "rafamadriz/friendly-snippets", -- useful snippets
         "onsails/lspkind.nvim", -- vs-code like pictograms
+        "hrsh7th/cmp-nvim-lsp-signature-help",
     },
 
     config = function()
@@ -119,6 +120,7 @@ return {
             sources = cmp.config.sources({
                 { name = "nvim_lsp", group_index = 1, keyword_length = 1, priority_weight = 1 },
                 { name = "luasnip", group_index = 1, max_view_entries = 2 }, -- snippets
+                { name = "nvim_lsp_signature_help" }, -- keep lsp signature open
                 { name = "nvim_lua", group_index = 3 },
                 { name = "buffer", group_index = 3, max_view_entries = 2 }, -- text within current buffer
                 { name = "path", group_index = 3, max_view_entries = 1 }, -- file system paths

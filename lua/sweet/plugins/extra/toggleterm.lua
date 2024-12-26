@@ -2,15 +2,19 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
 
-    -- 'akinsho/toggleterm.nvim', version = "*", config = true
     config = function()
         require("toggleterm").setup({
             persist_size = false,
             direction = "float",
-            -- open_mapping = [[<c=\>]],
         })
 
         vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle terminal" })
+        vim.keymap.set("n", "<A-;>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle terminal" })
+        vim.keymap.set("t", "<A-;>", "<cmd>ToggleTermToggleAll<CR>", { desc = "Toggle terminal" })
+
+        vim.keymap.set("n", "<C-;>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle terminal" })
+        vim.keymap.set("t", "<C-;>", "<cmd>ToggleTermToggleAll<CR>", { desc = "Toggle terminal" })
+
         vim.keymap.set("n", "<leader>tl", "<cmd>ToggleTerm direction=tab<CR>", { desc = "Toggle terminal tab" })
         vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { desc = "Hide terminal" })
 

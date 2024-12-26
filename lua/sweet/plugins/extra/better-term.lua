@@ -49,9 +49,9 @@ return {
 
         local keymap = vim.keymap -- for conciseness
 
-        keymap.set({ "n", "t" }, "<C-;>", function()
-            require("nvterm.terminal").toggle("float")
-        end, { desc = "Open terminal floating" })
+        -- keymap.set({ "n", "t" }, "<C-;>", function()
+        --     require("nvterm.terminal").toggle("float")
+        -- end, { desc = "Open terminal floating" })
 
         keymap.set({ "n", "t" }, "<A-i>", function()
             require("nvterm.terminal").toggle("vertical")

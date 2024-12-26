@@ -22,6 +22,22 @@ return {
                 nix = { "alejandra" },
                 asm = { "asmfmt" },
                 nasm = { "asmfmt" },
+                ziggy = { "ziggy" },
+                ziggy_schema = { "ziggy_schema" },
+            },
+            formatters = {
+                ziggy = {
+                    inherit = false,
+                    command = "ziggy",
+                    stdin = true,
+                    args = { "fmt", "--stdin" },
+                },
+                ziggy_schema = {
+                    inherit = false,
+                    command = "ziggy",
+                    stdin = true,
+                    args = { "fmt", "--stdin-schema" },
+                },
             },
 
             -- format_on_save = {
