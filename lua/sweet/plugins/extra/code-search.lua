@@ -1,6 +1,9 @@
 return {
     "napisani/nvim-github-codesearch",
     build = "nix-shell && make && echo",
+    enabled = function()
+        return not (os.getenv("GITHUB_AUTH_TOKEN") ~= "")
+    end,
     config = function()
         local gh_search = require("nvim-github-codesearch")
         gh_search.setup({

@@ -99,6 +99,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "a7097f372ba8f8866cda5e98d5bc828f2856c96c" },
   "rose-pine": { "branch": "main", "commit": "07a887a7bef4aacea8c7caebaf8cbf808cdc7a8e" },
   "silicon.lua": { "branch": "main", "commit": "b742773c2dd4a13dc7ecbda97ae45fad07e2a7c6" },
+  "smear-cursor.nvim": { "branch": "main", "commit": "051fe67e0081da273e07cd33ab8357d6b720f08f" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-git-file-history.nvim": { "branch": "master", "commit": "c27d99ba88ec5f0b6d2b9f9bc67dd3d14c610b25" },
   "telescope-glyph.nvim": { "branch": "master", "commit": "f63f01e129e71cc25b79637610674bbf0be5ce9d" },

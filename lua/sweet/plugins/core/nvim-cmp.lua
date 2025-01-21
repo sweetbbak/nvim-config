@@ -13,7 +13,7 @@ return {
         "L3MON4D3/LuaSnip", -- snippet engine
         "rafamadriz/friendly-snippets", -- useful snippets
         "onsails/lspkind.nvim", -- vs-code like pictograms
-        "hrsh7th/cmp-nvim-lsp-signature-help",
+        -- "hrsh7th/cmp-nvim-lsp-signature-help",
     },
 
     config = function()
@@ -22,6 +22,12 @@ return {
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
+
+        luasnip.setup({
+            region_check_events = "CursorHold,InsertLeave",
+            -- those are for removing deleted snippets, also a common problem
+            delete_check_events = "TextChanged,InsertEnter",
+        })
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load({
@@ -50,28 +56,28 @@ return {
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
                 -- -- use tab for LSP and snippet completions
-                -- ["<Tab>"] = cmp.mapping(function(fallback)
-                --     if cmp.visible() then
-                --         cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                --     elseif require("luasnip").expand_or_jumpable() then
-                --         require("luasnip").expand_or_jump()
-                --     else
-                --         fallback()
-                --     end
-                -- end, { "i", "s" }),
-                --
-                -- ["<S-Tab>"] = cmp.mapping(function(fallback)
-                --     if cmp.visible() then
-                --         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                --     elseif require("luasnip").jumpable(-1) then
-                --         require("luasnip").jump(-1)
-                --     else
-                --         fallback()
-                --     end
-                -- end, { "i", "s" }),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+                    elseif require("luasnip").expand_or_jumpable() then
+                        require("luasnip").expand_or_jump()
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
 
-                ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+                    elseif require("luasnip").jumpable(-1) then
+                        require("luasnip").jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
+                -- ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                -- ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
