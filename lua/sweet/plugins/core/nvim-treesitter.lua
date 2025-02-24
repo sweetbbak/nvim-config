@@ -69,6 +69,7 @@ return {
                     "gomod",
                     "gowork",
                     "gosum",
+                    "gdscript",
                     "bash",
                     "lua",
                     "nix",

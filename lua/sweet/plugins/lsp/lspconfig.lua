@@ -114,7 +114,13 @@ return {
             on_attach = on_attach,
             cmd = { "clangd", "--enable-config" },
         })
+
         lspconfig["cmake"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        lspconfig["gdscript"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })

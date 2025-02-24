@@ -83,6 +83,7 @@ keymap.set(motion_modes, "gh", "0")
 keymap.set(motion_modes, "gl", "$")
 
 keymap.set("n", "<leader>l", "<CMD>Lazy<CR>")
+keymap.set("n", "<leader>sw", "<CMD>:w !sudo tee %<CR>")
 keymap.set("n", "mm", "%", { desc = "Go to matching pair" })
 keymap.set("n", "<leader>nf", "<CMD>ene<CR>", { desc = "New file" })
 keymap.set("n", "<leader>nn", "<CMD>:%!alejandra -qq<CR>", { desc = "Format nix file" })
