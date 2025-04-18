@@ -1,16 +1,10 @@
 return {
-    -- "chrisgrieser/nvim-scissors",
-    -- dependencies = "nvim-telescope/telescope.nvim", -- optional
-    -- opts = {
-    --     snippetDir = "/home/sweet/.snippets",
-    -- },
     "chrisgrieser/nvim-scissors",
-    dependencies = { "nvim-telescope/telescope.nvim", "L3MON4D3/LuaSnip" },
-    -- opts = {
-    -- snippetDir = "./snippets",
-    -- },
+    opts = {
+        snippetDir = vim.fn.stdpath("config") .. "/snippets",
+    },
 
-    -- config = function() end,
+    dependencies = { "nvim-telescope/telescope.nvim", "L3MON4D3/LuaSnip" },
 
     config = function()
         -- default settings
@@ -31,10 +25,12 @@ return {
                     -- jumpBetweenBodyAndPrefix = "<C-Tab>", -- insert & normal mode
                 },
             },
-            telescope = {
-                -- By default, the query only searches snippet prefixes. Set this to
-                -- `true` to also search the body of the snippets.
-                alsoSearchSnippetBody = true,
+            snippetSelection = {
+                telescope = {
+                    -- By default, the query only searches snippet prefixes. Set this to
+                    -- `true` to also search the body of the snippets.
+                    alsoSearchSnippetBody = true,
+                },
             },
             -- `none` writes as a minified json file using `vim.encode.json`.
             -- `yq`/`jq` ensure formatted & sorted json files, which is relevant when
@@ -42,14 +38,4 @@ return {
             jsonFormatter = "jq", -- "yq"|"jq"|"none"
         })
     end,
-    -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/home/sweet/.snippets" } }),
-    -- require("luasnip.loaders.from_vscode").lazy_load(),
-    --
-    -- -- When used in visual mode prefills the selection as body.
-    -- vim.keymap.set("n", "<leader>si", function()
-    --     require("scissors").editSnippet()
-    -- end),
-    -- vim.keymap.set({ "n", "x" }, "<leader>sa", function()
-    --     require("scissors").addNewSnippet()
-    -- end),
 }

@@ -1,6 +1,9 @@
 return {
     "giusgad/pets.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "giusgad/hologram.nvim" },
+    enabled = function()
+        return false
+    end,
     config = function()
         require("pets").setup({
             row = 1, -- the row (height) to display the pet at (higher row means the pet is lower on the screen), must be 1<=row<=10

@@ -19,10 +19,11 @@ return {
                 "goimports", -- golang import
                 "stylua", -- lua formatter
                 "black", -- python formatter
-                "alejandra",
-                "asmfmt",
+                "alejandra", --nix formatter
+                "asmfmt", -- asm formatter
                 "pylint", -- python linter
                 "eslint_d", -- js linter
+                "gdtoolkit", -- godot linter and formatter
             },
         })
 
@@ -37,7 +38,15 @@ return {
         -- configure null_ls
         null_ls.setup({
             -- add package.json as identifier for root (for typescript monorepos)
-            root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+            root_dir = null_ls_utils.root_pattern(
+                ".null-ls-root",
+                "Makefile",
+                ".git",
+                "package.json",
+                "project.godot",
+                "build.zig",
+                "justfile"
+            ),
             -- setup formatters & linters
             sources = {
                 --  to disable file types use
@@ -45,10 +54,12 @@ return {
 
                 formatting.prettier.with({
                     extra_filetypes = { "svelte" },
-                }), -- js/ts formatter
+                }),
 
-                formatting.stylua, -- lua formatter
+                formatting.stylua,
                 formatting.isort,
+                diagnostics.gdlint,
+                formatting.gdformat,
                 formatting.black,
                 formatting.goimports,
                 formatting.goimports_reviser,
@@ -61,7 +72,7 @@ return {
                 code_actions.shellcheck,
                 code_actions.statix,
 
-                diagnostics.eslint_d.with({ -- js/ts linter
+                diagnostics.eslint_d.with({
                     condition = function(utils)
                         return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
                     end,

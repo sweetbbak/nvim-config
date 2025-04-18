@@ -28,6 +28,9 @@ keymap.set(
     { desc = "turn off inline diagnostics" }
 )
 
+-- gdformat
+keymap.set("n", "<leader>gd", "<cmd>w !gdformat %<cr>", { desc = "gdformat" })
+
 -- search inside visual selection
 keymap.set("x", "/", "<Esc>/\\%V")
 
