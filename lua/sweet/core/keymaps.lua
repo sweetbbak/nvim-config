@@ -120,6 +120,7 @@ keymap.set({ "n", "v" }, "<leader>ig", ":Gen Generate<CR>", { desc = "A[I] [G]en
 keymap.set({ "n", "v" }, "<leader>ir", ":Gen Review_Code<CR>", { desc = "A[I] [R]eview Code" })
 keymap.set({ "n", "v" }, "<leader>is", ":Gen Summarize<CR>", { desc = "A[I] [S]ummarize" })
 keymap.set({ "n", "v" }, "<leader>is", ":Gen Summarize<CR>", { desc = "A[I] [S]ummarize" })
+
 -- stylua: ignore
 keymap.set({ "n", "v" }, "<leader>dd", '<cmd>lua require("dapui").eval()<cr>', { desc = "[D]ebug selection with nvim-dap"})
 -- stylua: ignore
@@ -145,7 +146,10 @@ keymap.set({ "n", "v" }, "<leader>dg", '<cmd>lua require("dap-go").debug_test()<
 --     end
 -- end, { desc = "Execute current file in terminal (if it's a script)" })
 
+-- print time to buffer
+-- :exe ":normal i" . strftime("%c")
+
 keymap.set("n", "<leader>|", function()
     local cmd = vim.fn.input("cmd > ", "", "file") -- Get the current file name
-    vim.cmd("%r! " .. cmd)
+    vim.cmd("r! " .. cmd)
 end, { desc = "Insert output of a command" })

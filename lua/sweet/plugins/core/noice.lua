@@ -25,6 +25,7 @@ return {
                     { filter = { event = "msg_show", kind = "", find = "written" }, view = "mini" },
                     { filter = { event = "msg_showmode", kind = "", find = "INSERT" }, view = "mini" },
                     { filter = { event = "msg_showmode", kind = "", find = "VISUAL" }, view = "mini" },
+                    { filter = { event = "msg_showmode", kind = "", find = "WARN" }, view = "mini" },
                     { filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
                     { filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
                     { filter = { event = "emsg", find = "E23" }, skip = true },

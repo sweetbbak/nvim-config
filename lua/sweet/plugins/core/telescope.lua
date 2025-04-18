@@ -138,9 +138,11 @@ return {
         keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
         keymap.set("n", "<leader>fc", "<cmd>Telescope registers<cr>", { desc = "Fuzzy clipboards" })
 
+        -- undo
         keymap.set("n", "<leader>fu", ":Telescope undo<CR>", { noremap = true, silent = true, desc = "Undo" })
-        keymap.set("n", "<leader>fu", ":Telescope undo<CR>", { noremap = true, silent = true, desc = "Undo" })
+        keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 
+        -- themeing
         keymap.set(
             "n",
             "<leader>th",
@@ -155,6 +157,7 @@ return {
             { desc = "Fuzzy ect colorscheme" }
         )
 
+        -- info
         keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Key Maps" })
         keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Pages" })
         keymap.set("n", "<leader>fo", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Find in open buffer" })
