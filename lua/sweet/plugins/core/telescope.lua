@@ -18,15 +18,15 @@ return {
     branch = "0.1.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
         "andrew-george/telescope-themes",
         "debugloop/telescope-undo.nvim",
+        { "ghassan0/telescope-glyph.nvim" },
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         {
             "isak102/telescope-git-file-history.nvim",
             dependencies = { "tpope/vim-fugitive" },
         },
-        { "ghassan0/telescope-glyph.nvim" },
     },
     config = function()
         local telescope = require("telescope")

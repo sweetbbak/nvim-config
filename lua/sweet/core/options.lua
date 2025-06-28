@@ -19,6 +19,7 @@ opt.scrolloff = 10 -- allow to scroll past bottom
 
 -- line wrapping
 opt.wrap = false -- disable line wrapping
+opt.spell = false
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
