@@ -26,10 +26,16 @@ return {
                 -- "BlinkPairsOrange",
                 -- "BlinkPairsPurple",
                 -- "BlinkPairsBlue",
-                "BlinkCmpKindStruct",
+                -- "BlinkCmpKindSnippet",
+                -- "BlinkCmpKindConstant", -- blue
+                -- "BlinkCmpKindKeyword", --orange
+                -- "BlinkCmpKindFunction",
+
+                "BlinkCmpKindConstant",
                 "BlinkCmpKindSnippet",
                 "BlinkCmpKindKeyword",
-                "BlinkCmpKindConstant",
+                "BlinkCmpKindUnit",
+                "BlinkCmpKindValue",
             },
             matchparen = {
                 enabled = true,

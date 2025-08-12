@@ -37,6 +37,7 @@ return {
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
+            automatic_enable = {}, -- disables LSP being attached to buffer (its already being done)
         })
 
         mason_tool_installer.setup({
