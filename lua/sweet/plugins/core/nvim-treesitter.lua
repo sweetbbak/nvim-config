@@ -11,14 +11,25 @@ return {
             -- import nvim-treesitter plugin
             local treesitter = require("nvim-treesitter.configs")
 
-            require("nvim-treesitter.parsers").get_parser_configs().brainfuck = {
+            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+            parser_config.brainfuck = {
                 install_info = {
                     url = "https://github.com/hrmorley34/tree-sitter-brainfuck",
                     files = { "src/parser.c" },
+                    generate_requires_npm = true,
                 },
                 filetype = "b",
             }
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+            parser_config.wren = {
+                install_info = {
+                    url = "https://git.sr.ht/~jummit/tree-sitter-wren",
+                    files = { "src/parser.c" },
+                },
+                -- filetype = "wren",
+            }
+
             parser_config.ziggy = {
                 install_info = {
                     url = "https://github.com/kristoff-it/ziggy", -- local path or git repo
@@ -42,6 +53,10 @@ return {
                 },
                 filetype = "ziggy-schema",
             }
+
+            -- register apkbuild as using the same as bash
+            vim.treesitter.language.register("bash", "apkbuild")
+            vim.treesitter.language.register("wren", "wren")
 
             vim.filetype.add({
                 extension = {
@@ -107,5 +122,8 @@ return {
             -- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
             require("ts_context_commentstring").setup({})
         end,
+    },
+    {
+        "lluchs/vim-wren",
     },
 }

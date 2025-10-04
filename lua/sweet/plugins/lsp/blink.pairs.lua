@@ -35,7 +35,7 @@ return {
                 "BlinkCmpKindSnippet",
                 "BlinkCmpKindKeyword",
                 "BlinkCmpKindUnit",
-                "BlinkCmpKindValue",
+                "BlinkCmpKindClass",
             },
             matchparen = {
                 enabled = true,

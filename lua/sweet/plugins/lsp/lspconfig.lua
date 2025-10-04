@@ -7,7 +7,8 @@ return {
     },
     config = function()
         -- import lspconfig plugin
-        local lspconfig = require("lspconfig")
+        -- local lspconfig = require("lspconfig")
+        local lsp = vim.lsp
 
         -- import cmp-nvim-lsp plugin
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -92,105 +93,78 @@ return {
                 },
             },
         })
+
+        lsp.config("zls", {})
         -- configure html server
-        lspconfig["html"].setup({
+        lsp.config("html", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure typescript server with plugin
-        lspconfig["ts_ls"].setup({
+        lsp.config("ts_ls", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure css server
-        lspconfig["cssls"].setup({
+        lsp.config("cssls", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
-        lspconfig["bashls"].setup({
+        lsp.config("bashls", {
             capabilities = capabilities,
             on_attach = on_attach,
             cmd = { "bash-language-server", "start" },
             filetypes = { "sh", "zsh", "shell" },
         })
 
-        lspconfig["asm_lsp"].setup({
+        lsp.config("asm_lsp", {
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = { "s", "asm", "S" },
             cmd = { "asm-lsp" },
         })
 
-        lspconfig["nixd"].setup({
+        lsp.config("nixd", {
             capabilities = capabilities,
             on_attach = on_attach,
             -- cmd = { "nixd-next" },
         })
 
-        lspconfig["clangd"].setup({
+        lsp.config("clangd", {
             capabilities = capabilities,
             on_attach = on_attach,
             cmd = { "clangd", "--enable-config" },
         })
 
-        lspconfig["cmake"].setup({
+        lsp.config("cmake", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
-        lspconfig["gdscript"].setup({
+        lsp.config("gdscript", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
-
-        -- configure svelte server
-        -- lspconfig["svelte"].setup({
-        --   capabilities = capabilities,
-        --   on_attach = function(client, bufnr)
-        --     on_attach(client, bufnr)
-        --
-        --     vim.api.nvim_create_autocmd("BufWritePost", {
-        --       pattern = { "*.js", "*.ts" },
-        --       callback = function(ctx)
-        --         if client.name == "svelte" then
-        --           client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-        --         end
-        --       end,
-        --     })
-        --   end,
-        -- })
-        --
-        -- -- configure prisma orm server
-        -- lspconfig["prismals"].setup({
-        --   capabilities = capabilities,
-        --   on_attach = on_attach,
-        -- })
-        --
-        -- -- configure graphql language server
-        -- lspconfig["graphql"].setup({
-        --   capabilities = capabilities,
-        --   on_attach = on_attach,
-        --   filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-        -- })
 
         -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
+        lsp.config("emmet_ls", {
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
         })
 
-        lspconfig["gopls"].setup({
+        lsp.config("gopls", {
             capabilities = capabilities,
             on_attach = on_attach,
             -- filetypes = { "go" },
         })
+
         -- god damn ZLS is annoying af. It completely shits itself when there is any error no matter how stupid
         vim.g.zig_fmt_autosave = 0
-        lspconfig["zls"].setup({
+        lsp.config("zls", {
             -- on_attach = function(client, bufnr)
             -- client.resolved_capabilities.document_formatting = false
             -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
@@ -227,25 +201,24 @@ return {
             },
         })
 
-        -- lspconfig["java-language-server"].setup({
-        --     capabilities = capabilities,
-        --     on_attach = on_attach,
-        --     -- filetypes = { "go" },
-        -- })
-
-        -- configure python server
-        lspconfig["pyright"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-
-        lspconfig["csharp_ls"].setup({
+        lsp.config("java-language-server", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure python server
-        lspconfig["rust_analyzer"].setup({
+        lsp.config("pyright", {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        lsp.config("csharp_ls", {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        -- configure python server
+        lsp.config("rust_analyzer", {
             capabilities = capabilities,
             on_attach = on_attach,
             -- settings = {
@@ -257,13 +230,8 @@ return {
             -- },
         })
 
-        -- lspconfig["nil_ls"].setup({
-        --     capabilities = capabilities,
-        --     on_attach = on_attach,
-        -- })
-
         -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+        lsp.config("lua_ls", {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = { -- custom settings for lua
